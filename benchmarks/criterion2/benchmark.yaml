@@ -1,0 +1,2 @@
+fuzz_target: c2
+project: criterion2

@@ -3,11 +3,13 @@
 #include<signal.h>
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
-  pid_t pid = fork();
-  if(pid==0){
-      raise(SIGSEGV);
+  if(fork()==0){ //Crash before parent's termination
+    raise(SIGSEGV);
+  } else if(fork()==0) { //Crash after parent's termination
+    sleep(2);
+    raise(SIGSEGV);
   } else {
-      sleep(1);
+    sleep(1);
   }
   return 0;
 }

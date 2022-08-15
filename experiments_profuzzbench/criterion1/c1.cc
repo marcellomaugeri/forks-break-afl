@@ -4,7 +4,7 @@
 #include<stdint.h>
 #include<sys/wait.h>
 
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
+int main(int argc, char **argv){
 	if(fork()==0){ //Child process
 		raise(SIGSEGV); //Simulated crash
 	} else { //Parent process

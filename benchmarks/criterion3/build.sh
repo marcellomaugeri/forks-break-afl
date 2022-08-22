@@ -1,4 +1,0 @@
-cd c3
-
-export FUZZ_TARGET=c3
-$CXX $CXXFLAGS -std=c++11 $SRC/poc.cc $FUZZER_LIB -o $OUT/$FUZZ_TARGET

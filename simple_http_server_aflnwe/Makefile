@@ -1,0 +1,14 @@
+all: server
+
+clean:
+	@rm -rf *.o
+	@rm -rf server
+
+server: main.o httpd.o
+	$(CC) -o server $^
+
+main.o: main.c httpd.h
+	$(CC) -c -o main.o main.c
+
+httpd.o: httpd.c httpd.h
+	$(CC) -c -o httpd.o httpd.c

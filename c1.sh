@@ -4,7 +4,7 @@
 
 #AFLplusplus
 ./AFLplusplus/afl-clang-lto forks-break-afl/targets/c1/c1-afl.cc -o ./forks-break-afl/bin/c1/AFLplusplus
-./AFLplusplus/afl-fuzz -i forks-break-afl/input/ -o ./output -- ./forks-break-afl/bin/c1/AFLplusplus
+./AFLplusplus/afl-fuzz -i forks-break-afl/input/ -o ./output -- ./forks-break-afl/bin/c1/AFLplusplus @@
 
 #Eclipser
 gcc forks-break-afl/targets/c1/c1-afl.cc -o ./forks-break-afl/bin/c1/Eclipser
@@ -42,7 +42,7 @@ clang++ -fsanitize=fuzzer ./forks-break-afl/targets/c1/c1-libfuzzer.cc -o ./fork
 ./forks-break-afl/bin/c1/entropic -focus_function=entropic
 
 #Honggfuzz
-./honggfuzz/hfuzz_cc/hfuzz-clang++ forks-break-afl/targets/c1/c1-afl.cc -o ./forks-break-afl/bin/c1/honggfuzz
+./honggfuzz/hfuzz_cc/hfuzz-clang++ forks-break-afl/targets/c1/c1-honggfuzz.cc -o ./forks-break-afl/bin/c1/honggfuzz
 ./honggfuzz/honggfuzz -i forks-break-afl/input/ -o ./output -s -- ./forks-break-afl/bin/c1/honggfuzz
 
 #aflnwe

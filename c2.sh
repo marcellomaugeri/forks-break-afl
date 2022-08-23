@@ -47,5 +47,5 @@ clang++ -fsanitize=fuzzer ./forks-break-afl/targets/c2/c2-libfuzzer.cc -o ./fork
 ./forks-break-afl/bin/c2/entropic -focus_function=entropic
 
 #Honggfuzz
-./honggfuzz/hfuzz_cc/hfuzz-clang++ forks-break-afl/targets/c2/c2-afl.cc -o ./forks-break-afl/bin/c2/honggfuzz
+./honggfuzz/hfuzz_cc/hfuzz-clang++ forks-break-afl/targets/c2/c2-honggfuzz.cc -o ./forks-break-afl/bin/c2/honggfuzz
 ./honggfuzz/honggfuzz -i forks-break-afl/input/ -o ./output -s -- ./forks-break-afl/bin/c2/honggfuzz

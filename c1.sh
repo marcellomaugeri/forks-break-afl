@@ -53,11 +53,11 @@ cd ../../
 ./aflnwe/afl-fuzz -i forks-break-afl/experiments_profuzzbench/input_test/ -o ./output -N tcp://127.0.0.1/12913 -- ./forks-break-afl/simple_http_server_aflnwe/server 
 
 #AFLNet
-cd forks-break-afl/simple_http_server
+cd forks-break-afl/simple_http_server_aflnwe
 make clean
 make CC=../../aflnet/afl-clang-fast
 cd ../../
-./aflnet/afl-fuzz -i forks-break-afl/experiments_profuzzbench/input_test/ -o ./output -N tcp://127.0.0.1/12913 -P HTTP -- ./forks-break-afl/simple_http_server/server 
+./aflnet/afl-fuzz -i forks-break-afl/experiments_profuzzbench/input_test/ -o ./output -N tcp://127.0.0.1/12913 -P HTTP ./forks-break-afl/simple_http_server_aflnwe/server 
 
 #StateAFL
 cd forks-break-afl/simple_http_server

@@ -4,7 +4,7 @@
 pkill -f "./forks-break-afl/bin/c2/AFL"
 
 #AFLplusplus
-./AFLplusplus/afl-clang++ forks-break-afl/targets/c2/c2-afl.cc -o ./forks-break-afl/bin/c2/AFLplusplus
+./AFLplusplus/afl-clang-lto forks-break-afl/targets/c2/c2-afl.cc -o ./forks-break-afl/bin/c2/AFLplusplus
 ./AFLplusplus/afl-fuzz -i forks-break-afl/input/ -o ./output -t 5000 -- ./forks-break-afl/bin/c2/AFLplusplus
 pkill -f "./forks-break-afl/bin/c2/AFLplusplus"
 
@@ -40,7 +40,7 @@ export AFL_LLVM_LAF_ALL=1
 
 #libfuzzer
 clang++ -fsanitize=address,fuzzer ./forks-break-afl/targets/c2/c2-libfuzzer.cc -o ./forks-break-afl/bin/c2/libfuzzer
-./forks-break-afl/bin/c2/libfuzzer
+./forks-break-afl/bin/c2/libfuzzer -timeout=1
 
 #entropic
 clang++ -fsanitize=fuzzer ./forks-break-afl/targets/c2/c2-libfuzzer.cc -o ./forks-break-afl/bin/c2/entropic
